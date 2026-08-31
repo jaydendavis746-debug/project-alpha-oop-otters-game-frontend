@@ -1,4 +1,4 @@
-const result = [
+export const result = [
     {
         id: 'res1',
         username: 'bob1',

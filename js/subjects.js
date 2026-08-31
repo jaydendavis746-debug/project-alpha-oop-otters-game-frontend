@@ -1,0 +1,1 @@
+import { subjects } from '../mock/subjects';

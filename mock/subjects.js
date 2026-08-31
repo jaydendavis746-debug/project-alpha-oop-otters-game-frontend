@@ -1,6 +1,6 @@
 // Mock data for subjects
 
-const subjects = [
+export const subjects = [
     {
         id: 'sub1',
         name: "Geography",
