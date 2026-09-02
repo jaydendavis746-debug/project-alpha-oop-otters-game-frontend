@@ -1,7 +1,7 @@
 
-function protectRoute(e){
-    e.preventDefault()
-
+function protectRoute(){
+   
+    preventDefault()
     const session = JSON.parse(localStorage.getItem("session"))
     if(!session || session.loggedIn){
         window.location.href = 'login.html'   
