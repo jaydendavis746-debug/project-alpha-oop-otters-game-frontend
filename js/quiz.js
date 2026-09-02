@@ -107,6 +107,7 @@ function protectRoute(e) {
     e.preventDefault()
     const session = JSON.parse(localStorage.getItem("session"));
     if (!session || !session.loggedIn) {
+        alert('You must be logged in')
         window.location.href = "login.html";
     }
 }
@@ -165,34 +166,36 @@ function loadQuestion() {
 
 
 nextBtn.addEventListener("click", () => {
+
     if (!selectedAnswerValue) {
         alert("Please select an answer before continuing");
         return;
     }
 
-    const q = questions[currentIndex];
+    if (selectedAnswerValue === questions[currentIndex].correct_option) {
+        score++;
+    }
 
     givenAnswers.push({
-        question_id: q.question_id,
-        user_answer: selectedAnswerValue,
+        question_id: questions[currentIndex].question_id,
+        user_answer: selectedAnswerValue
     });
 
-    if (selectedAnswerValue === q.correct_option) {
-        score++;
-        correctAnswers.push({
-            question_id: q.question_id,
-            correct_answer: q.correct_option
-        });
+    correctAnswers.push({
+        question_id: questions[currentIndex].question_id,
+        correct_answer: questions[currentIndex].correct_option
+    });
+
+    if (currentIndex === questions.length - 1) {
+        finishQuiz();
+        return;
     }
 
     currentIndex++;
-
-    if (currentIndex >= questions.length) {
-        finishQuiz();
-    } else {
-        loadQuestion();
-    }
+    selectedAnswerValue = null;
+    loadQuestion();
 });
+
 
 
 async function finishQuiz() {
@@ -218,6 +221,8 @@ async function finishQuiz() {
 
     localStorage.setItem("quizScore", score);
     localStorage.setItem("quizTotal", questions.length);
+    localStorage.setItem("given_answers", JSON.stringify(givenAnswers));
+    localStorage.setItem("correct_answers", JSON.stringify(correctAnswers));
 
     window.location.href = "results.html";
 }
