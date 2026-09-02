@@ -96,10 +96,10 @@ body {
 
 /* Question text */
 #question-text {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     color: grey;
     margin-bottom: 1.5rem;
-    line-height: 1.4;
+    line-height: 1.5;
 }
 
 /* Answers container */
@@ -116,7 +116,7 @@ body {
     color: #2d3436;
     border: 2px solid transparent;
     border-radius: 10px;
-    padding: 0.85rem 1rem;
+    padding: 0.75rem 1rem;
     font-size: 1rem;
     font-weight: 500;
     cursor: pointer;
