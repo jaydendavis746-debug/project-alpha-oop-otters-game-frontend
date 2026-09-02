@@ -1,0 +1,69 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: rgb(247, 103, 103);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.welcome-card {
+    background: white ;
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+}
+
+.group-title{
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    color: #888;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+h1 {
+    margin: 0 0 1rem;
+    color: grey;
+    font-size: 2.2rem;
+}
+
+.description {
+    color: grey;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+}
+
+.button-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.btn {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+btn:hover {
+    transform: translateY(-2px)
+}
+
+.btn-primary {
+    background-color: grey;
+    color: white;
+}
+
+.btn-secondary {
+    background-color: grey;
+    color: white
+}
