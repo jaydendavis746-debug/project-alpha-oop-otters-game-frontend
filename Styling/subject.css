@@ -9,7 +9,7 @@ body {
     animation: gradient 15s ease infinite;
 }
 
-/* Animated gradient */
+
 @keyframes gradient {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -88,7 +88,7 @@ body {
     box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
-/* Title bar */
+
 .title {
     background-color: grey;
     padding: 12px 0;
@@ -109,9 +109,7 @@ body {
     font-weight: bold;
 }
 
-/* ============================
-   SUBJECT GRID
-   ============================ */
+
 
 #subject-grid {
     display: grid;
