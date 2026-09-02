@@ -1,6 +1,4 @@
-/* ============================
-   GLOBAL PAGE BACKGROUND
-   ============================ */
+
 
 body {
     margin: 0;
@@ -18,9 +16,7 @@ body {
     100% { background-position: 0% 50%; }
 }
 
-/* ============================
-   GLOBAL NAVBAR STYLING
-   ============================ */
+
 
 .navbar {
     width: 100%;
@@ -67,9 +63,7 @@ body {
     padding-bottom: 4px;
 }
 
-/* ============================
-   PAGE CONTENT WRAPPER
-   ============================ */
+
 
 .page-content {
     min-height: calc(100vh - 80px);
@@ -79,9 +73,7 @@ body {
     padding: 40px 20px;
 }
 
-/* ============================
-   SUBJECT CONTAINER
-   ============================ */
+
 
 .subject-container {
     background-color: #ffffff;
