@@ -9,7 +9,7 @@ signupForm.addEventListener('submit', function(event) {
 
     let userBase = JSON.parse(localStorage.getItem('fakeUsers')) || [];
 
-    const userExists = userBase.find(user => user.userName === newUserName);
+    const userExists = userBase.find(user => user.username === newUserName);
 
     if(userExists) {
         messageBox.textContent = "Username already taken";
