@@ -99,6 +99,59 @@ const mockQuestions = [
         option_c: 'Brussels',
         option_d: 'Canberra',
         correct_option: 'Paris'
+    },
+   // -------------------------
+    // SUBJECT 4 — French
+    // -------------------------
+    {
+        question_id: 11,
+        subject_id: 4,
+        question_text: 'What is the French word for "apple"?',
+        option_a: 'Pomme',
+        option_b: 'Banane',
+        option_c: 'Orange',
+        option_d: 'Poire',
+        correct_option: 'Pomme'
+    },
+    {
+        question_id: 12,
+        subject_id: 4,
+        question_text: 'How do you say "thank you" in French?',
+        option_a: 'Bonjour',
+        option_b: 'Merci',
+        option_c: 'Au revoir',
+        option_d: 'S’il vous plaît',
+        correct_option: 'Merci'
+    },
+    {
+        question_id: 13,
+        subject_id: 4,
+        question_text: 'What is the French word for "cat"?',
+        option_a: 'Chien',
+        option_b: 'Chat',
+        option_c: 'Cheval',
+        option_d: 'Oiseau',
+        correct_option: 'Chat'
+    },
+    {
+        question_id: 14,
+        subject_id: 4,
+        question_text: 'How do you say "goodbye" in French?',
+        option_a: 'Bonjour',
+        option_b: 'Merci',
+        option_c: 'Au revoir',
+        option_d: 'Salut',
+        correct_option: 'Au revoir'
+    },
+    {
+        question_id: 15,
+        subject_id: 4,
+        question_text: 'What is the French word for "bread"?',
+        option_a: 'Lait',
+        option_b: 'Pain',
+        option_c: 'Fromage',
+        option_d: 'Eau',
+        correct_option: 'Pain'
     }
 ];
 
@@ -132,7 +185,13 @@ const nextBtn = document.getElementById("next-btn");
 
 function loadQuestion() {
 
-    const q = mockQuestions[currentIndex];
+    if (questions.length === 0) {
+    alert("This quiz has no questions available.");
+    window.location.href = "subjects.html";
+    return;
+}
+
+   const q = questions[currentIndex];
 
     selectedAnswerValue = null;
     questionCounter.textContent = `Question ${currentIndex + 1} of ${questions.length}`;
