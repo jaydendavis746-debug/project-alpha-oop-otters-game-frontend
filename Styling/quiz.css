@@ -61,6 +61,13 @@ body {
     font-weight: bold;
 }
 
+.answer-btn.selected {
+    background-color: #ffe3e3;
+    border-color: #ff6b6b;
+    color: #d63031;
+    font-weight: bold;
+}
+
 #next-btn {
     width: 100%;
     background-color: #ff6b6b;
