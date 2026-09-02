@@ -1,4 +1,4 @@
-body {
+/*body {
     margin: 0;
     min-height: 100vh;
     background-color: rgb(247, 103, 103);
@@ -6,4 +6,104 @@ body {
     align-items: center;
     justify-content: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 2rem 0;
+}*/
+body {
+    margin: 0;
+    min-height: 100vh;
+    /*background: linear-gradient(135deg, #ff6b6b, #4ecdc4);*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Rockwell';
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
 }
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+
+
+.results-container {
+    background: #ffffff;
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+}
+
+h2 {
+    color: #2d3436;
+    font-size: 2rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+#score-text {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #2d3436;
+    margin: 0.5rem;
+}
+
+#percentage-text{
+    display: inline-block;
+    background-color: #ffe3e3;
+    color: #d63031;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+h3 {
+    color: #d63031;
+    font-size: 1.5rem;
+    border-bottom: 2px solid;
+    padding-bottom: 0.5rem;
+}
+
+#breakdown-container {
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+    padding-bottom: 1rem;
+}
+
+.breakdown-item {
+    background-color: lightgrey;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    text-align: left;
+    border-left: 4px solid;
+}
+
+.results-container > button {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s ease, background-color 0.2 ease;
+    /*Add colour to buttons*/
+}
+
