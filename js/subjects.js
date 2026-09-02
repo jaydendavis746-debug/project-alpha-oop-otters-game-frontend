@@ -26,7 +26,7 @@ async function loadSubjects() {
         const card = document.createElement('div');
         card.classList.add('subject-card')
         card.innerHTML= `<h3>${subject.name}</h3>`;
-        
+
         grid.appendChild(card)
 
         card.addEventListener("click", () => {
