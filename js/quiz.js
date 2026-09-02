@@ -156,8 +156,7 @@ const mockQuestions = [
 ];
 
 
-function protectRoute(e) {
-    e.preventDefault()
+function protectRoute() {
     const session = JSON.parse(localStorage.getItem("session"));
     if (!session || !session.loggedIn) {
         alert('You must be logged in')
