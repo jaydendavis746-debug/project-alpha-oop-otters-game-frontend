@@ -24,9 +24,8 @@ signupForm.addEventListener('submit', function(event) {
 
     userBase.push(newUser)
 
-    localStorage.setItem('fakeUsers', JSON.stringify(userBase))
+    localStorage.setItem('fakeUser', JSON.stringify(userBase))
 
-    //messageBox.textContent = "Sign up Successful!"
 
     setTimeout(() => {
         window.location.href = 'login.html'
