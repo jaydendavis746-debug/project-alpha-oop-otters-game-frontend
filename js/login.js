@@ -1,34 +1,33 @@
-const loginForm = document.getElementById('login-form');
-const loginMessage = document.getElementById('login-message');
+const loginForm = document.getElementById("login-form");
+const loginMessage = document.getElementById;
 
-loginForm.addEventListener('submit', function(event) {
-    event.preventDefault();
+loginForm.addEventListener("submit", function (event) {
+  event.preventDefault();
 
-    const inputUserName = document.getElementById('login-username').value;
-    const inputPassword = document.getElementById('login-password').value
+  const inputUserName = document.getElementById("login-username").value;
+  const inputPassword = document.getElementById("login-password").value;
 
-    const userBase = JSON.parse(localStorage.getItem('fakeUsers')) || [];
+  const userBase = JSON.parse(localStorage.getItem("fakeUser")) || [];
 
-    const userFound = userBase.find(user => user.username === inputUserName)
+  const userFound = userBase.find((user) => user.username === inputUserName);
 
-    if (!userFound) {
-        loginMessage.textContent = "Username not found. Please sign up.";
-        return;
-    }
+  if (!userFound) {
+    alert("User not found");
+    return;
+  }
 
-    if (userFound.password !== inputPassword) {
-        loginMessage.textContent = "Incorrect Password."
-        return;
-    }
+  if (userFound.password !== inputPassword) {
+    alert("Incorrect password");
+    return;
+  }
 
-    loginMessage.textContent = "Login Success"
+  localStorage.setItem(
+    "session",
+    JSON.stringify({
+      loggedIn: true,
+      username: userFound.username,
+    }),
+  );
 
-    localStorage.setItem('currentUser', JSON.stringify ({
-        username: userFound.username
-    }));
-
-    console.log("successful")
-    setTimeout(() => {
-    window.location.href = '/pages/subjects.html';
-    }, 1000);
-})
+  window.location.href = "subjects.html";
+});
