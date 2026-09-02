@@ -1,11 +1,11 @@
-
-const subjects = [
-    { id: 'sub1', name: "Geography"},
-    {id:'sub2', name: 'History',},
-    { id: 'sub3', name: 'RE',},
-    { id: 'sub4', name: 'French',},
-
-]
+async function loadSubjects() {
+    
+    const subjects = await Promise.resolve([
+        { id: 1, name: "Geography" },
+        { id: 2, name: "History" },
+        { id: 3, name: "RE" },
+        { id: 4, name: "French" }
+    ]);
 
 
 const grid = document.querySelector("#subject-grid");
@@ -18,3 +18,6 @@ subjects.forEach(subject =>{
 
     grid.appendChild(card)
 })
+};
+
+loadSubjects()
