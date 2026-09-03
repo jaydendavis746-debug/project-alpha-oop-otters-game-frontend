@@ -1,26 +1,36 @@
 
-function protectRoute(){
-   
-    preventDefault()
-    const session = JSON.parse(localStorage.getItem("session"))
-    if(!session || session.loggedIn){
+const API_URL = 'https://project-alpha-oop-otters-game-backend.onrender.com'
+
+
+    const token = localStorage.getItem("token")
+    if(!token){
         window.location.href = 'login.html'   
     }
-}
 
+
+
+const grid = document.querySelector("#subject-grid");
 
 async function loadSubjects() {
     
-    const subjects = await Promise.resolve([
-        { subject_id: 1, name: "Geography" },
-        { subject_id: 2, name: "History" },
-        { subject_id: 3, name: "RE" },
-        { subject_id: 4, name: "French" }
-    ]);
-    
-    
-    const grid = document.querySelector("#subject-grid");
-    
+
+    try{
+        const options = {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json"   
+            }
+        }
+        const res = await fetch(`${API_URL}/subjects`, options)
+        const subjects = await res.json()
+
+        if(!res.ok){
+            console.error("Failed to load subjects", subjects.error)
+            return;
+        }
+ 
+        grid.innerHTML = ''
     
     subjects.forEach(subject =>{
         const card = document.createElement('div');
@@ -35,9 +45,12 @@ async function loadSubjects() {
         });
 
     })
+
+} catch(err){
+    console.error('Network error', err)
+}
 };
 
 
 
 loadSubjects()
-protectRoute()
