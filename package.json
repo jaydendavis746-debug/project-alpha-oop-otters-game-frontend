@@ -1,0 +1,35 @@
+{
+  "name": "project-alpha-oop-otters-game-frontend",
+  "version": "1.0.0",
+  "description": "This project was created to give students an interactive away to test their knowledge across non-STEM subjects. The aim was to help students with subject material in an engaging way that can ensure learning is fun while being given constant feedback.",
+  "main": "config.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+ "jest": {
+  "testEnvironment": "jest-environment-jsdom",
+  "transform": {}
+},
+  "scripts": {
+     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaydendavis746-debug/project-alpha-oop-otters-game-frontend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/jaydendavis746-debug/project-alpha-oop-otters-game-frontend/issues"
+  },
+  "homepage": "https://github.com/jaydendavis746-debug/project-alpha-oop-otters-game-frontend#readme",
+  "devDependencies": {
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^7.0.1",
+    "jest": "^30.5.1",
+    "jest-environment-jsdom": "^30.5.1"
+  }
+}

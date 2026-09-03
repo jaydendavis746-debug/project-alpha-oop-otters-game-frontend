@@ -22,7 +22,9 @@ const questionText = document.getElementById("question-text");
 const answersContainer = document.getElementById("answers-container");
 const nextBtn = document.getElementById("next-btn");
 
-async function loadQuestions() {
+
+
+ async function loadQuestions() {
   try {
     const options = {
       method: "GET",
@@ -48,7 +50,7 @@ async function loadQuestions() {
   }
 }
 
-function loadQuestion() {
+ function loadQuestion() {
   if (questions.length === 0) {
     alert("This quiz has no questions available.");
     window.location.href = "subjects.html";
@@ -112,8 +114,7 @@ nextBtn.addEventListener("click", () => {
   selectedAnswerValue = null;
   loadQuestion();
 });
-
-async function finishQuiz() {
+ async function finishQuiz() {
   const userId = Number(localStorage.getItem("user_id"));
 
   const resultPayload = {
