@@ -1,4 +1,4 @@
-const API_URL = 'https://project-alpha-oop-otters-game-backend.onrender.com'
+const API_URL = "https://project-alpha-oop-otters-game-backend.onrender.com";
 
 const signupForm = document.getElementById("signup-form");
 const messageBox = document.getElementById("message-box");
@@ -9,7 +9,7 @@ signupForm.addEventListener("submit", async function (event) {
   const username = document.getElementById("username").value.trim();
   const password = document.getElementById("password").value.trim();
 
-   if (!username || !password) {
+  if (!username || !password) {
     messageBox.textContent = "Please enter a username and password";
     messageBox.style.color = "red";
     return;
@@ -28,10 +28,12 @@ signupForm.addEventListener("submit", async function (event) {
 
     if (!res.ok) {
       messageBox.textContent = "Username already taken";
+      messageBox.style.color = "red";
       return;
     }
 
     messageBox.textContent = "signp successful";
+    messageBox.style.color= 'green'
 
     setTimeout(() => {
       window.location.href = "login.html";
@@ -39,5 +41,6 @@ signupForm.addEventListener("submit", async function (event) {
   } catch (err) {
     console.error(err);
     messageBox.textContent = "Network error";
+    messageBox.style.color = "red";
   }
 });
