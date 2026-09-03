@@ -40,7 +40,7 @@ body {
 
 .navbar a,
 .navbar .logout-btn {
-    color: #fff;
+    /*color: #fff;
     font-size: 1.1rem;
     font-weight: 600;
     text-decoration: none;
@@ -48,20 +48,36 @@ body {
     border: none;
     cursor: pointer;
     padding: 6px 0;
-    transition: color 0.25s ease, transform 0.25s ease;
+    transition: color 0.25s ease, transform 0.25s ease;*/
+    text-decoration: none;
+    transition: 0.4s;
+    position: relative;
+    color: white;
+    padding: 6px;
 }
 
-.navbar a:hover,
-.navbar .logout-btn:hover {
-    color: #00aaff;
-    transform: translateY(-2px);
+.navbar a::before, .navbar .logout-btn::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 4px;
+    background-color: #e73c7e;
+    bottom: 0;
+    left: 0;
+    transition: width 0.4s;
+}
+.navbar a:hover::before,
+.navbar .logout-btn:hover::before {
+    /*color: #00aaff;
+    transform: translateY(-2px);*/
+    width: 100%;
 }
 
-.navbar a.active {
+/*.navbar a.active {
     color: #00aaff;
     border-bottom: 2px solid #00aaff;
     padding-bottom: 4px;
-}
+}*/
 
 
 
