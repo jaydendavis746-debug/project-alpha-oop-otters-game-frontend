@@ -32,6 +32,7 @@ loginForm.addEventListener("submit", async function (event) {
     }
 
     localStorage.setItem("token", data.token);
+    localStorage.setItem("user_id", data.user.user_id)
 
     messageBox.textContent = "Login successful";
     messageBox.style.color = "green";

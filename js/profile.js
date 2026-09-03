@@ -1,12 +1,12 @@
-function protectRoute() {
-    const session = JSON.parse(localStorage.getItem("session"));
-    if (!session || !session.loggedIn) {
+
+    const token = localStorage.getItem("token")
+    if (!token) {
         alert('You must be logged in');
         window.location.href = "login.html";
     }
-}
 
-protectRoute();
+
+
 
 const session = JSON.parse(localStorage.getItem('session'));
 
