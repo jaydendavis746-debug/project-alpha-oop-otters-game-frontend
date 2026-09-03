@@ -36,8 +36,31 @@ body {
     margin: 0;
     padding: 0;
 }
-
 .navbar a,
+.navbar .logout-btn {
+    text-decoration: none;
+    transition: 0.4s;
+    position: relative;
+    color: white;
+    padding: 6px;
+    cursor: pointer;
+}
+
+.navbar a::before, .navbar .logout-btn::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 4px;
+    background-color:  #ff6b6b;
+    bottom: 0;
+    left: 0;
+    transition: width 0.4s;
+}
+.navbar a:hover::before,
+.navbar .logout-btn:hover::before {
+    width: 100%;
+}
+/*.navbar a,
 .navbar .logout-btn {
     color: #fff;
     font-size: 1.1rem;
@@ -60,7 +83,7 @@ body {
     color: #00aaff;
     border-bottom: 2px solid #00aaff;
     padding-bottom: 4px;
-}
+}*/
 
 
 
@@ -86,7 +109,7 @@ body {
 
 
 h2 {
-    color: #2d3436;
+    color: #ff6b6b;
     font-size: 2rem;
     margin-top: 0;
     margin-bottom: 1rem;
@@ -95,7 +118,7 @@ h2 {
 #score-text {
     font-size: 1.5rem;
     font-weight: 500;
-    color: #2d3436;
+    color:  #ff6b6b;
     margin: 0.5rem;
 }
 
@@ -103,7 +126,7 @@ h2 {
 #percentage-text {
     display: inline-block;
     background-color: #ffe3e3;
-    color: #d63031;
+    color:  #ff6b6b;
     font-size: 1.5rem;
     font-weight: bold;
     padding: 0.5rem 1rem;
@@ -113,7 +136,7 @@ h2 {
 }
 
 h3 {
-    color: #d63031;
+    color:  #ff6b6b;
     font-size: 1.5rem;
     border-bottom: 2px solid;
     padding-bottom: 0.5rem;

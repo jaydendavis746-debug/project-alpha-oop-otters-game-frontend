@@ -40,8 +40,31 @@ body {
     margin: 0;
     padding: 0;
 }
-
 .navbar a,
+.navbar .logout-btn {
+    text-decoration: none;
+    transition: 0.4s;
+    position: relative;
+    color: white;
+    padding: 6px;
+    cursor: pointer;
+}
+
+.navbar a::before, .navbar .logout-btn::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 4px;
+    background-color: #e73c7e;
+    bottom: 0;
+    left: 0;
+    transition: width 0.4s;
+}
+.navbar a:hover::before,
+.navbar .logout-btn:hover::before {
+    width: 100%;
+}
+/*.navbar a,
 .navbar .logout-btn {
     color: #fff;
     font-size: 1.1rem;
@@ -64,7 +87,7 @@ body {
     color: #00aaff;
     border-bottom: 2px solid #00aaff;
     padding-bottom: 4px;
-}
+}*/
 
 /* ============================
    PAGE CONTENT WRAPPER
@@ -94,7 +117,7 @@ body {
 
 /* Title */
 h2 {
-    color: #2d3436;
+    color:  #ff6b6b;
     font-size: 2rem;
     margin-top: 0;
     margin-bottom: 1rem;
@@ -109,7 +132,7 @@ h2 {
 
 /* Results header */
 h3 {
-    color: #d63031;
+    color:  #ff6b6b;
     font-size: 1.5rem;
     border-bottom: 2px solid;
     padding-bottom: 0.5rem;
@@ -131,7 +154,7 @@ h3 {
     padding: 1rem;
     margin-bottom: 1rem;
     text-align: left;
-    border-left: 4px solid #d63031;
+    border-left: 4px solid  #ff6b6b;
 }
 
 /* Logout button */

@@ -59,7 +59,7 @@ body {
 
 h1 {
     margin: 0 0 1rem;
-    color: grey;
+    color:  #ff6b6b;
     font-size: 2.2rem;
 }
 
@@ -85,15 +85,16 @@ h1 {
 }
 
 btn:hover {
-    transform: translateY(-2px)
+    transform: translateY(-2px);
+
 }
 
 .btn-primary {
-    background-color: grey;
+    background-color: #ff6b6b;
     color: white;
 }
 
 .btn-secondary {
-    background-color: grey;
+    background-color: #ff6b6b;
     color: white
 }

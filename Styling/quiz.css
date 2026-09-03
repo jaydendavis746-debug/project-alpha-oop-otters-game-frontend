@@ -39,6 +39,31 @@ body {
 
 .navbar a,
 .navbar .logout-btn {
+    text-decoration: none;
+    transition: 0.4s;
+    position: relative;
+    color: white;
+    padding: 6px;
+    cursor: pointer;
+}
+
+.navbar a::before, .navbar .logout-btn::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 4px;
+    background-color: #e73c7e;
+    bottom: 0;
+    left: 0;
+    transition: width 0.4s;
+}
+.navbar a:hover::before,
+.navbar .logout-btn:hover::before {
+    width: 100%;
+}
+/*
+.navbar a,
+.navbar .logout-btn {
     color: #fff;
     font-size: 1.1rem;
     font-weight: 600;
@@ -61,6 +86,9 @@ body {
     border-bottom: 2px solid #00aaff;
     padding-bottom: 4px;
 }
+*/
+
+
 
 
 
@@ -88,7 +116,7 @@ body {
 #question-counter {
     font-size: 0.9rem;
     letter-spacing: 1.5px;
-    color: #888;
+    color: black;
     margin-top: 0;
     margin-bottom: 0.5rem;
     font-weight: 600;
@@ -97,7 +125,7 @@ body {
 
 #question-text {
     font-size: 1.5rem;
-    color: grey;
+    color: black;
     margin-bottom: 1.5rem;
     line-height: 1.5;
 }
