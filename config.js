@@ -1,0 +1,1 @@
+export const API_URL = 'https://project-alpha-oop-otters-game-backend.onrender.com'

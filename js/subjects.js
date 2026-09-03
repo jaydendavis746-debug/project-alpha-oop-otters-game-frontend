@@ -1,43 +1,46 @@
+const API_URL = "https://project-alpha-oop-otters-game-backend.onrender.com";
 
-function protectRoute(){
-   
-    preventDefault()
-    const session = JSON.parse(localStorage.getItem("session"))
-    if(!session || session.loggedIn){
-        window.location.href = 'login.html'   
-    }
+const token = localStorage.getItem("token");
+if (!token) {
+  window.location.href = "login.html";
 }
 
+const grid = document.querySelector("#subject-grid");
 
 async function loadSubjects() {
-    
-    const subjects = await Promise.resolve([
-        { subject_id: 1, name: "Geography" },
-        { subject_id: 2, name: "History" },
-        { subject_id: 3, name: "RE" },
-        { subject_id: 4, name: "French" }
-    ]);
-    
-    
-    const grid = document.querySelector("#subject-grid");
-    
-    
-    subjects.forEach(subject =>{
-        const card = document.createElement('div');
-        card.classList.add('subject-card')
-        card.innerHTML= `<h3>${subject.name}</h3>`;
+  try {
+    const options = {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    };
+    const res = await fetch(`${API_URL}/subjects`, options);
+    const subjects = await res.json();
 
-        grid.appendChild(card)
+    if (!res.ok) {
+      console.error("Failed to load subjects", subjects.error);
+      return;
+    }
 
-        card.addEventListener("click", () => {
-            localStorage.setItem("selectedSubject", subject.subject_id);
-            window.location.href = "quiz.html";
-        });
+    grid.innerHTML = "";
 
-    })
-};
+    subjects.forEach((subject) => {
+      const card = document.createElement("div");
+      card.classList.add("subject-card");
+      card.innerHTML = `<h3>${subject.name}</h3>`;
 
+      grid.appendChild(card);
 
+      card.addEventListener("click", () => {
+        localStorage.setItem("selectedSubject", subject.subject_id);
+        window.location.href = "quiz.html";
+      });
+    });
+  } catch (err) {
+    console.error("Server error", err);
+  }
+}
 
-loadSubjects()
-protectRoute()
+loadSubjects();

@@ -1,58 +1,72 @@
-function protectRoute() {
-    const session = JSON.parse(localStorage.getItem("session"));
-    if (!session || !session.loggedIn) {
-        alert('You must be logged in');
-        window.location.href = "login.html";
+const API_URL = "https://project-alpha-oop-otters-game-backend.onrender.com";
+
+const token = localStorage.getItem("token");
+const userId = Number(localStorage.getItem("user_id"));
+const username = localStorage.getItem("username");
+
+if (!token || !userId || !username) {
+    alert("You must be logged in");
+    window.location.href = "login.html";
+}
+
+const usernameSpan = document.getElementById("profile-username");
+const resultsContainer = document.getElementById("results-list");
+
+async function loadProfile() {
+    try {
+        const options = {
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+            },
+        };
+
+        const userRes = await fetch(`${API_URL}/users/${username}`, options);
+        const userData = await userRes.json();
+
+        if (!userRes.ok) {
+            alert("Failed to load profile");
+            return;
+        }
+
+        usernameSpan.textContent = userData.username;
+
+        const resultsRes = await fetch(`${API_URL}/results/${userId}`, options);
+        const resultsData = await resultsRes.json();
+
+        if (!resultsRes.ok) {
+            alert("Failed to load results");
+            return;
+        }
+
+        if (resultsData.length === 0) {
+            resultsContainer.innerHTML = "<p>No results yet.</p>";
+            return;
+        }
+
+        resultsContainer.innerHTML = "";
+
+        for (const result of resultsData) {
+            const subjectRes = await fetch(`${API_URL}/subjects/${result.subject_id}`, options);
+            const subjectData = await subjectRes.json();
+
+            const item = document.createElement("div");
+            item.classList.add("result-item");
+
+            item.innerHTML = `
+                <p><strong>Subject:</strong> ${subjectData.name.toUpperCase()}</p>
+                <p><strong>Score:</strong> ${result.score}</p>
+                <p><strong>Date:</strong> ${new Date(result.created_at).toLocaleString()}</p>
+                <hr>
+            `;
+
+            resultsContainer.appendChild(item);
+        }
+
+    } catch (err) {
+        console.error("Server error:", err);
     }
 }
 
-protectRoute();
-
-const session = JSON.parse(localStorage.getItem('session'));
-
-const usernameSpan = document.getElementById('profile-username');
-usernameSpan.textContent = session.username;
-
-const fakeResults = [
-    { subject: "Geography", score: 8, date: "2026-09-01T14:22:00Z" },
-    { subject: "French", score: 6, date: "2026-08-29T10:10:00Z" },
-    { subject: "History", score: 9, date: "2026-08-25T16:45:00Z" },
-    { subject: "RE", score: 7, date: "2026-08-20T12:30:00Z" },
-    { subject: "Geography", score: 5, date: "2026-08-18T09:15:00Z" },
-    { subject: "French", score: 10, date: "2026-08-15T18:05:00Z" },
-    { subject: "History", score: 4, date: "2026-08-10T11:50:00Z" }
-];
-
-localStorage.setItem("fakeResults", JSON.stringify(fakeResults));
-
-function loadResults(){
-    const results = JSON.parse(localStorage.getItem('fakeResults')) || [];
-    renderResults(results);
-}
-
-function renderResults(results){
-    const container = document.getElementById('results-list');
-    
-    if(results.length === 0){
-        container.innerHTML = '<p>No results yet.</p>';
-        return;
-    }
-    
-    container.innerHTML = '';
-    
-    results.forEach(result => {
-        const item = document.createElement('div');
-        item.classList.add('result-item');
-
-        item.innerHTML = `
-            <p><strong>Subject:</strong> ${result.subject}</p>
-            <p><strong>Score:</strong> ${result.score}</p>
-            <p><strong>Date:</strong> ${new Date(result.date).toLocaleString()}</p>
-            <hr>
-        `;
-
-        container.appendChild(item);
-    });
-}
-
-loadResults();
+loadProfile();
