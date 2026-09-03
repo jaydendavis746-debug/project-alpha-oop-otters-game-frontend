@@ -1,175 +1,30 @@
 
-const mockQuestions = [
-    {
-        question_id: 1,
-        subject_id: 1,
-        question_text: 'What is the capital of Australia?',
-        option_a: 'London',
-        option_b: 'Paris',
-        option_c: 'Brussels',
-        option_d: 'Canberra',
-        correct_option: 'Canberra'
-    },
-    {
-        question_id: 2,
-        subject_id: 1,
-        question_text: 'What is the capital of England?',
-        option_a: 'London',
-        option_b: 'Paris',
-        option_c: 'Brussels',
-        option_d: 'Canberra',
-        correct_option: 'London'
-    },
-    {
-        question_id: 3,
-        subject_id: 1,
-        question_text: 'What is the capital of France?',
-        option_a: 'London',
-        option_b: 'Paris',
-        option_c: 'Brussels',
-        option_d: 'Canberra',
-        correct_option: 'Paris'
-    },
-    {
-        question_id: 4,
-        subject_id: 1,
-        question_text: 'What is the capital of France?',
-        option_a: 'London',
-        option_b: 'Paris',
-        option_c: 'Brussels',
-        option_d: 'Canberra',
-        correct_option: 'Paris'
-    },
-    {
-        question_id: 5,
-        subject_id: 1,
-        question_text: 'What is the capital of Belgium?',
-        option_a: 'London',
-        option_b: 'Paris',
-        option_c: 'Brussels',
-        option_d: 'Canberra',
-        correct_option: 'Brussels'
-    },
-    {
-        question_id: 6,
-        subject_id: 1,
-        question_text: 'What is the capital of France?',
-        option_a: 'London',
-        option_b: 'Paris',
-        option_c: 'Brussels',
-        option_d: 'Canberra',
-        correct_option: 'Paris'
-    },
-    {
-        question_id: 7,
-        subject_id: 1,
-        question_text: 'What is the capital of France?',
-        option_a: 'London',
-        option_b: 'Paris',
-        option_c: 'Brussels',
-        option_d: 'Canberra',
-        correct_option: 'Paris'
-    },
-    {
-        question_id: 8,
-        subject_id: 1,
-        question_text: 'What is the capital of France?',
-        option_a: 'London',
-        option_b: 'Paris',
-        option_c: 'Brussels',
-        option_d: 'Canberra',
-        correct_option: 'Paris'
-    },
-    {
-        question_id: 9,
-        subject_id: 1,
-        question_text: 'What is the capital of France?',
-        option_a: 'London',
-        option_b: 'Paris',
-        option_c: 'Brussels',
-        option_d: 'Canberra',
-        correct_option: 'Paris'
-    },
-    {
-        question_id: 10,
-        subject_id: 1,
-        question_text: 'What is the capital of France?',
-        option_a: 'London',
-        option_b: 'Paris',
-        option_c: 'Brussels',
-        option_d: 'Canberra',
-        correct_option: 'Paris'
-    },
-   // -------------------------
-    // SUBJECT 4 — French
-    // -------------------------
-    {
-        question_id: 11,
-        subject_id: 4,
-        question_text: 'What is the French word for "apple"?',
-        option_a: 'Pomme',
-        option_b: 'Banane',
-        option_c: 'Orange',
-        option_d: 'Poire',
-        correct_option: 'Pomme'
-    },
-    {
-        question_id: 12,
-        subject_id: 4,
-        question_text: 'How do you say "thank you" in French?',
-        option_a: 'Bonjour',
-        option_b: 'Merci',
-        option_c: 'Au revoir',
-        option_d: 'S’il vous plaît',
-        correct_option: 'Merci'
-    },
-    {
-        question_id: 13,
-        subject_id: 4,
-        question_text: 'What is the French word for "cat"?',
-        option_a: 'Chien',
-        option_b: 'Chat',
-        option_c: 'Cheval',
-        option_d: 'Oiseau',
-        correct_option: 'Chat'
-    },
-    {
-        question_id: 14,
-        subject_id: 4,
-        question_text: 'How do you say "goodbye" in French?',
-        option_a: 'Bonjour',
-        option_b: 'Merci',
-        option_c: 'Au revoir',
-        option_d: 'Salut',
-        correct_option: 'Au revoir'
-    },
-    {
-        question_id: 15,
-        subject_id: 4,
-        question_text: 'What is the French word for "bread"?',
-        option_a: 'Lait',
-        option_b: 'Pain',
-        option_c: 'Fromage',
-        option_d: 'Eau',
-        correct_option: 'Pain'
-    }
-];
+const API_URL = "https://project-alpha-oop-otters-game-backend.onrender.com";
 
-
-function protectRoute() {
-    const session = JSON.parse(localStorage.getItem("session"));
-    if (!session || !session.loggedIn) {
-        alert('You must be logged in')
-        window.location.href = "login.html";
-    }
+const token = localStorage.getItem("token")
+if (!token) {
+    window.location.href = "login.html";
 }
 
 
+
 const selectedSubject = Number(localStorage.getItem("selectedSubject"));
-const questions = mockQuestions.filter(q => q.subject_id === selectedSubject);
-console.log("Filtered questions:", questions);
+if (!selectedSubject) {
+  window.location.href = "subjects.html";
+}
 
 
+function getUserId(){
+    const token = localStorage.getItem("token");
+  if (!token) return null;
+
+  const payload = JSON.parse(atob(token.split(".")[1]));
+  return payload.id;
+}
+
+const userId = getUserId()
+
+let questions = []
 let currentIndex = 0;
 let score = 0;
 let correctAnswers = [];
@@ -180,6 +35,38 @@ const questionCounter = document.getElementById("question-counter");
 const questionText = document.getElementById("question-text");
 const answersContainer = document.getElementById("answers-container");
 const nextBtn = document.getElementById("next-btn");
+
+
+
+async function loadQuestions(){
+
+
+    try{
+
+        const options = {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json"
+            }
+        }
+
+        const res = await fetch(`${API_URL}/questions/${selectedSubject}`, options)
+        const data = await res.json()
+
+   if (!res.ok) {
+      alert(data.error || "Failed to load questions");
+      window.location.href = "subjects.html";
+      return;
+    }
+    questions = data
+
+    loadQuestion()
+
+    } catch(err){
+        console.error('Server error', err)
+    }
+}
 
 
 function loadQuestion() {
@@ -257,10 +144,9 @@ nextBtn.addEventListener("click", () => {
 
 
 async function finishQuiz() {
-    const session = JSON.parse(localStorage.getItem("session"));
 
     const resultPayload = {
-        user_id: session.userId,
+        user_id: userId,
         subject_id: selectedSubject,
         score: score,
         correct_answers: correctAnswers,
@@ -269,13 +155,26 @@ async function finishQuiz() {
 
     console.log("POST /results/submit", resultPayload);
 
-    /*
-    await fetch("http://localhost:3000/results/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(resultPayload)
-    });
-    */
+    try{
+
+        const options =  {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(resultPayload)
+        }
+
+        const res = await fetch(`${API_URL}/results/submit`, options)
+
+        const data = res.json()
+
+        if(!res.ok){
+            console.error("Failed to submit results:", data.error);
+        }
+  
+    } catch(err){
+        console.err('Server error ', err)
+    }
+    
 
     localStorage.setItem("quizScore", score);
     localStorage.setItem("quizTotal", questions.length);
@@ -286,5 +185,5 @@ async function finishQuiz() {
 }
 
 
-loadQuestion();
-protectRoute();
+loadQuestions();
+

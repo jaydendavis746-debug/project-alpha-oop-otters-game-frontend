@@ -39,7 +39,7 @@ loginForm.addEventListener("submit", async function (event) {
     window.location.href = "subjects.html";
   } catch (err) {
     console.error(err);
-    messageBox.textContent = "Network error";
+    messageBox.textContent = "Server error";
     messageBox.style.color = "red";
   }
 });

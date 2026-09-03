@@ -40,7 +40,7 @@ signupForm.addEventListener("submit", async function (event) {
     }, 1500);
   } catch (err) {
     console.error(err);
-    messageBox.textContent = "Network error";
+    messageBox.textContent = "Sever error";
     messageBox.style.color = "red";
   }
 });
