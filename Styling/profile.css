@@ -42,12 +42,12 @@ body {
 }
 .navbar a,
 .navbar .logout-btn {
-    
     text-decoration: none;
     transition: 0.4s;
     position: relative;
     color: white;
     padding: 6px;
+    cursor: pointer;
 }
 
 .navbar a::before, .navbar .logout-btn::before {
