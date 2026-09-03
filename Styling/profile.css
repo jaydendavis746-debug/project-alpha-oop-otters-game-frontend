@@ -1,0 +1,178 @@
+/* ============================
+   GLOBAL PAGE BACKGROUND
+   ============================ */
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Rockwell';
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ============================
+   NAVBAR
+   ============================ */
+
+.navbar {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    padding: 16px 0;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar a,
+.navbar .logout-btn {
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px 0;
+    transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.navbar a:hover,
+.navbar .logout-btn:hover {
+    color: #00aaff;
+    transform: translateY(-2px);
+}
+
+.navbar a.active {
+    color: #00aaff;
+    border-bottom: 2px solid #00aaff;
+    padding-bottom: 4px;
+}
+
+/* ============================
+   PAGE CONTENT WRAPPER
+   ============================ */
+
+.page-content {
+    min-height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+/* ============================
+   PROFILE CONTAINER
+   ============================ */
+
+.profile-container {
+    background: #ffffff;
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+}
+
+/* Title */
+h2 {
+    color: #2d3436;
+    font-size: 2rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+/* Username section */
+#user-info {
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    color: #2d3436;
+}
+
+/* Results header */
+h3 {
+    color: #d63031;
+    font-size: 1.5rem;
+    border-bottom: 2px solid;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Results list container */
+#results-list {
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+    padding-bottom: 1rem;
+}
+
+/* Individual result item */
+.result-item {
+    background-color: lightgrey;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    text-align: left;
+    border-left: 4px solid #d63031;
+}
+
+/* Logout button */
+#logout-btn-profile {
+    width: 100%;
+    padding: 0.75rem;
+    margin-top: 0.75rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+#logout-btn-profile:hover {
+    background-color: #ee5253;
+    transform: translateY(-1px);
+}
+
+#logout-btn-profile:active {
+    transform: translateY(0);
+}
+
+/* ============================
+   RESPONSIVE
+   ============================ */
+
+@media (max-width: 600px) {
+    .navbar ul {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .profile-container {
+        padding: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.6rem;
+    }
+}
