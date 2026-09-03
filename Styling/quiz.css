@@ -116,7 +116,7 @@ body {
 #question-counter {
     font-size: 0.9rem;
     letter-spacing: 1.5px;
-    color: #888;
+    color: black;
     margin-top: 0;
     margin-bottom: 0.5rem;
     font-weight: 600;
@@ -125,7 +125,7 @@ body {
 
 #question-text {
     font-size: 1.5rem;
-    color: grey;
+    color: black;
     margin-bottom: 1.5rem;
     line-height: 1.5;
 }
